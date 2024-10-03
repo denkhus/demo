@@ -1,0 +1,17 @@
+@if (dataSource.state() === 'data') {
+  <mat-card>
+    <mat-card-header>
+      <mat-card-subtitle>{{ '#' + dataSource.data()?.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Name: {{ dataSource.data().name }}</p>
+
+      <p>Last Name: {{ dataSource.data().lastName }}</p>
+
+      <p>Address: {{ dataSource.data().address }}</p>
+      <p>
+        <img mat-card-image [src]="dataSource.data().photo" />
+      </p>
+    </mat-card-content>
+  </mat-card>
+}

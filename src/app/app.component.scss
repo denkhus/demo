@@ -1,0 +1,9 @@
+:host {
+  @apply flex flex-col min-h-screen;
+  .active {
+    background-color: red;
+  }
+  .container {
+    height: 100vh;
+  }
+}

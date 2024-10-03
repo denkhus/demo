@@ -1,0 +1,26 @@
+<header class="sticky top-0 z-10">
+  <mat-toolbar color="primary" role="navigation">
+    <button mat-icon-button aria-label="Menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar>
+</header>
+
+<main class="flex-1 permanent-main">
+  <mat-sidenav-container class="container">
+    <mat-sidenav [opened]="true" mode="side">
+      <mat-nav-list>
+        @for (link of sideMenuService.getLinks(); track link.text) {
+          <a routerLinkActive="active" [routerLink]="['/' + link.path]" mat-list-item>
+            <span class="entry">
+              <span>{{ link.text }}</span>
+            </span>
+          </a>
+        }
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</main>

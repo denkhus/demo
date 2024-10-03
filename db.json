@@ -1,0 +1,113 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "name": "test",
+      "lastName": "test1",
+      "address": "Russian"
+    },
+    {
+      "id": "2",
+      "name": "ert",
+      "lastName": "ert",
+      "address": "erte"
+    }
+  ],
+  "products": [
+    {
+      "id": "2",
+      "name": "TestProduct124",
+      "price": "323.05"
+    },
+    {
+      "id": "3",
+      "name": "test",
+      "price": "343"
+    },
+    {
+      "id": null,
+      "name": "test",
+      "price": "12"
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "customer": "TestName",
+      "ordersLines": [
+        {
+          "id": "1",
+          "productId": "1",
+          "count": "4"
+        },
+        {
+          "id": "2",
+          "productId": "2",
+          "count": "6"
+        }
+      ],
+      "createAt": "2024.04.09",
+      "updateAt": "",
+      "status": "Completed"
+    },
+    {
+      "id": "77",
+      "customerId": "1",
+      "createdAt": "",
+      "status": "Created",
+      "ordersLines": [
+        {
+          "productId": "3",
+          "count": "243",
+          "price": "02342"
+        }
+      ]
+    },
+    {
+      "id": "4a05",
+      "customer": "test",
+      "createdAt": "",
+      "status": "Cancelled",
+      "ordersLines": [
+        {
+          "productId": "3",
+          "count": "4",
+          "price": "234"
+        }
+      ]
+    },
+    {
+      "id": "e0b6",
+      "customer": "test",
+      "createdAt": "",
+      "status": 0,
+      "ordersLines": [
+        {
+          "productId": "3",
+          "count": "34",
+          "price": "34"
+        }
+      ]
+    },
+    {
+      "id": "55",
+      "customer": "test",
+      "createdAt": "",
+      "status": "Completed",
+      "ordersLines": []
+    },
+    {
+      "id": "66",
+      "customer": "test",
+      "createdAt": "",
+      "status": "InProgress",
+      "ordersLines": [
+        {
+          "product": "test",
+          "count": "23",
+          "price": "234"
+        }
+      ]
+    }
+  ]
+}

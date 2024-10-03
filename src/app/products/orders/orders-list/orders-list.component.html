@@ -1,0 +1,30 @@
+<div class="flex flex-col items-start gap-2">
+  <div class="flex items-end justify-end gap-2">
+    <a (click)="onCreate($event)" mat-button>Create</a>
+  </div>
+  <app-table
+    [tableData]="data()"
+    [pageSize]="tableService.pageSize()"
+    [isPageable]="true"
+    [totalCount]="tableService.totalCount()"
+    [pageIndex]="tableService.pageIndex()"
+    [sortDirection]="tableService.sortDirection()"
+    [sortBy]="tableService.sortBy()"
+    [tableColumns]="columnDefinitions()"
+  ></app-table>
+</div>
+<ng-template #actions let-context="context">
+  <button *appCanEditOrder="context.row.status" mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item [routerLink]="[context.row.id]">
+      <mat-icon>info</mat-icon>
+      <span>Detail</span>
+    </a>
+    <a mat-menu-item (click)="onChangeStatus($event, context.row)">
+      <mat-icon>edit</mat-icon>
+      <span>Change status</span>
+    </a>
+  </mat-menu>
+</ng-template>

@@ -1,0 +1,18 @@
+@if (dataSource.state() === 'data') {
+  <mat-card>
+    <mat-card-header>
+      <mat-card-subtitle>{{ 'Customer:' + dataSource.data()?.customer }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>CreatedAt: {{ dataSource.data().createAt }}</p>
+      <p>UpdatedAt: {{ dataSource.data().updateAt }}</p>
+      <p>Status: {{ dataSource.data().status }}</p>
+      <p>Orders Lines</p>
+      @for (orderLine of dataSource.data().ordersLines; track orderLine) {
+        <div>
+          <span>Product:{{ orderLine.product }} Count: {{ orderLine.count }} Price: {{ orderLine.price }}$</span>
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+}

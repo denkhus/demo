@@ -1,0 +1,58 @@
+<table
+  mat-table
+  [matSortActive]="sortBy"
+  [matSortDirection]="sortDirection"
+  [dataSource]="tableDataSource"
+  matSort
+  (matSortChange)="onSortChange($event)"
+>
+  <colgroup>
+    <col width="120" />
+    <col width="auto" />
+    <col width="50" />
+    <col width="50" />
+  </colgroup>
+  <ng-container *ngFor="let tableColumn of tableColumns" [matColumnDef]="tableColumn.name">
+    <ng-container *ngIf="tableColumn.isSortable; else notSortable">
+      <th mat-header-cell *matHeaderCellDef [mat-sort-header]="tableColumn.name">
+        {{ tableColumn.name }}
+      </th>
+    </ng-container>
+    <ng-template #notSortable>
+      <th mat-header-cell *matHeaderCellDef [class.text-right]="tableColumn.position === 'right'">
+        {{ tableColumn.name }}
+      </th>
+    </ng-template>
+    <td mat-cell *matCellDef="let element" [class.text-right]="tableColumn.position === 'right'">
+      <ng-container *ngIf="!tableColumn.templateRef; else common">
+        {{ element | dataPropertyGetter: tableColumn.dataKey }}
+      </ng-container>
+
+      <ng-template
+        #common
+        [ngTemplateOutlet]="tableColumn.templateRef"
+        [ngTemplateOutletContext]="{
+          context: {
+            row: element,
+          },
+        }"
+      >
+      </ng-template>
+      <ng-template #testTemp let-context="context">
+        <h3>This is custom value</h3>
+      </ng-template>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
+<mat-paginator
+  *ngIf="isPageable"
+  [pageSizeOptions]="pageSizeOptions"
+  [pageSize]="pageSize"
+  [pageIndex]="pageIndex - 1"
+  [length]="totalCount"
+  (page)="onPageChange($event)"
+  showFirstLastButtons
+>
+</mat-paginator>

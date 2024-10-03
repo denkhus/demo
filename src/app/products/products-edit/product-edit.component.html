@@ -1,0 +1,25 @@
+@if (formGroup) {
+  <mat-card>
+    <mat-card-header>
+      <mat-card-subtitle> {{ '#' + formGroup.value['id'] }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="flex flex-col gap-2 mt-2 text-center">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+        <mat-form-field class="w-full">
+          <mat-label>Name:</mat-label>
+          <input matInput type="text" formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field class="w-full">
+          <mat-label>Price:</mat-label>
+          <input matInput type="text" formControlName="price" />
+        </mat-form-field>
+        <div class="flex justify-center gap-2">
+          <button mat-flat-button color="primary" type="submit" [disabled]="formGroup.pristine || formGroup.invalid">
+            Save
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+}
